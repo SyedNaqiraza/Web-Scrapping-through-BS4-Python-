@@ -1,0 +1,41 @@
+First of all i will like to introduce you a quite easy and productive library for web scrapping it is python based library 
+named BS4 for using this library first you have to install it on your windows/linux, as i am a user of windows i will teach you how to 
+install this library on your windows.
+First of all locate where the python folder is installed in your Local Disk C 
+IF you are using Python 2.7 then it will normally be
+C:\Python27
+when you reach there go to scripts folder like 
+C:\Python27\scripts
+when you reach there type a command pip install bs4 
+it will took 20 to 30 seconds to install when this is installed it is ready for the use 
+Now for python 3.6
+Locating your python3.6 path could be hectic for you so i am here to make this simple and easy for you if you install python 3.6 manually 
+without changing its destination this will be your path 
+C:\Users\ZainRafay\AppData\Local\Programs\Python\Python36-32\Scripts>
+here zainrafay is my username you should put your user name here 
+after reaching in the path you can run the command pip install bs4
+when it is successfull you are good for using it 
+Now lets come towards the real part how to use this library it is super easy 
+
+******CODE*****With*****Explanation*******
+
+from bs4 import BeautifulSoup
+import requests
+#Import that lib in your python script 
+resp = requests.get("http://www.trulia.com")
+# Make a new variable and save the address of the website whome you want too querry 
+# You can hardcode the url, Remember you must give tha address of that page of the website which you want to query 
+#here resp variable is getting the response from the particular website
+soup = BeautifulSoup(resp.text, "lxml")
+# That line gathers all of the html content of that page through which you will have to apply filters for scrapping out useful 
+#information
+#After retrieving the HTML content here comes the filtering part go to that webpage and open the view page source and search for 
+#the information you want, in other words information must be encapsulated in different tags of html or classes you have to search for that 
+#filtering conditions are applied on that in my code  this filering is applied on class 
+fulldata = soup.findAll("div", {"class": "card backgroundBasic"})
+#Now here all the content of class card backgroundBasic which is nested in the div section will be retrieved
+homeinfo = fulldata[Home].text
+#the data you retrieved may come with tags and other stuff so convert this into full text form
+# When tha data is retrieved apply some for logics to gather what you want after that it is full basic programming so 
+# i am leaving upto you 
+#Thanks :)
